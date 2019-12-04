@@ -52,16 +52,20 @@ function spotifyThis() {
         console.log("-----------------------------------------------------------------------")
         console.log("Artist: " + data.tracks.items[0].artists[0].name);
         console.log("Track: " + data.tracks.items[0].name);
+        if (data.tracks.items[0].preview_url === null) {
+            console.log("No preview available.")
+        } else {
         console.log("URL: " + data.tracks.items[0].preview_url);
+        }
         console.log("Album: " + data.tracks.items[0].album.name);
         console.log("-----------------------------------------------------------------------")
     });
 }
 
-function movieThis() {
-    if (typeof liriData === "movie-this") {
+function movieThis(input) {
+    if (typeof liriData === "undefined") {
         liriData = "Mr. Nobody";
-        console.log(liriData);
+        //console.log(liriData);
     }
     //form API call here
     axios.get("http://www.omdbapi.com/?apikey=trilogy&s=${movie}")
