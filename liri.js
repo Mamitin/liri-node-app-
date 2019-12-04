@@ -53,56 +53,46 @@ function spotifyThis() {
         console.log("Artist: " + data.tracks.items[0].artists[0].name);
         console.log("Track: " + data.tracks.items[0].name);
         if (data.tracks.items[0].preview_url === null) {
-            console.log("No preview available.")
+            console.log("URL: No preview available.")
         } else {
-        console.log("URL: " + data.tracks.items[0].preview_url);
+            console.log("URL: " + data.tracks.items[0].preview_url);
         }
         console.log("Album: " + data.tracks.items[0].album.name);
         console.log("-----------------------------------------------------------------------")
     });
 }
 
-function movieThis(input) {
-    if (typeof liriData === "undefined") {
-        liriData = "Mr. Nobody";
-        //console.log(liriData);
+function movieThis(movie) {
+    if (!movie) {
+        movie = "Mr. Nobody";
     }
     //form API call here
-    axios.get("http://www.omdbapi.com/?apikey=trilogy&s=${movie}")
+    axios.get("http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&tomatoes=true&apikey=trilogy")
         .then(function (response) {
-            //  console.log(response.data.Search[0].imdbID);
-            var tempImdbID = response.data.Search[0].imdbID;
-            //console.log(tempImdbID);
-            axios.get("http://www.omdbapi.com/?apikey=trilogy&i=${tempImdbID}")
-                .then(function (response2) {
-                    console.log("-----------------------------------------------------------------------")
-                    console.log("Title: " + response2.data.Title);
-                    console.log("Year: " + response2.data.Year);
-                    console.log("IMDB Rating: " + response2.data.imdbRating);
-                    console.log("Rotten Tomatoes Rating: " + response2.data.Ratings[1].Value)
-                    console.log("Country Produced: " + response2.data.Country);
-                    console.log("Language: " + response2.data.Language);
-                    console.log("Plot: " + response2.data.Plot);
-                    console.log("Actors: " + response2.data.Actors);
-                    console.log("-----------------------------------------------------------------------")
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-
+                console.log("-----------------------------------------------------------------------")
+                console.log("Title: " + response.data.Title);
+                console.log("Year: " + response.data.Year);
+                console.log("IMDB Rating: " + response.data.imdbRating);
+                console.log("Rotten Tomatoes Rating: " + response.data.Ratings[1].Value);
+                console.log("Country Produced: " + response.data.Country);
+                console.log("Language: " + response.data.Language);
+                console.log("Plot: " + response.data.Plot);
+                console.log("Actors: " + response.data.Actors);
+                console.log("-----------------------------------------------------------------------")
         })
         .catch(function (error) {
             console.log(error);
+            console.log("No results found.")
         });
 }
 
 function doWhatItSays() {
     fs.readFile("random.txt", "utf-8", function (err, data) {
         console.log(data)
-         var dataArray = data.split(",");
-          liriCommand = dataArray[0];
+        var dataArray = data.split(",");
+        liriCommand = dataArray[0];
         // // console.log(dataArray[0]);
-          liriData = dataArray[1];
+        liriData = dataArray[1];
         // // console.log(dataArray[1]);
         //console.log(err);
         // console.log(dataArray);
