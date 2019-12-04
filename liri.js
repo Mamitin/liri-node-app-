@@ -63,6 +63,7 @@ function movieThis() {
         liriData = "Mr. Nobody";
         console.log(liriData);
     }
+    //form API call here
     axios.get("http://www.omdbapi.com/?apikey=trilogy&s=${movie}")
         .then(function (response) {
             //  console.log(response.data.Search[0].imdbID);
@@ -92,11 +93,15 @@ function movieThis() {
 }
 
 function doWhatItSays() {
-    fs.readFile("random.txt", "utf8", function (err, data) {
-        var dataArray = data.split(",");
-        liriCommand = dataArray[0];
-        liriData = dataArray[1];
+    fs.readFile("random.txt", "utf-8", function (err, data) {
+        console.log(data)
+         var dataArray = data.split(",");
+          liriCommand = dataArray[0];
+        // // console.log(dataArray[0]);
+          liriData = dataArray[1];
+        // // console.log(dataArray[1]);
         //console.log(err);
+        // console.log(dataArray);
         spotifyThis(liriData);
     });
 }
