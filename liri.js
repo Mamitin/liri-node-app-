@@ -9,7 +9,6 @@ var moment = require("moment");
 var fs = require("fs");
 var liriCommand = process.argv[2];
 var liriData = process.argv[3];
-//console.log(process.argv);
 
 
 
@@ -62,29 +61,41 @@ function spotifyThis() {
     });
 }
 
-function movieThis(movie) {
-    if (!movie) {
-        movie = "Mr. Nobody";
+
+
+function movieThis(liriData) {
+    if (liriData === undefined) {
+        liriData = "Mr. Nobody";
+        //console.log(liriData);
     }
-    //form API call here
-    axios.get("http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&tomatoes=true&apikey=trilogy")
+
+    var queryUrl = "https://www.omdbapi.com/?t=" + liriData + "&y=&plot=short&apikey=trilogy"
+    axios.get(queryUrl)
         .then(function (response) {
-                console.log("-----------------------------------------------------------------------")
-                console.log("Title: " + response.data.Title);
-                console.log("Year: " + response.data.Year);
-                console.log("IMDB Rating: " + response.data.imdbRating);
+            //console.log(response.data);
+            console.log("--------------------------------------------------------------------");
+            console.log("Title: " + response.data.Title);
+            console.log("Year: " + response.data.Year);
+            console.log("IMDB Rating: " + response.data.imdbRating);
+            console.log("Country Produced: " + response.data.Country);
+            console.log("Language: " + response.data.Language);
+            console.log("Plot: " + response.data.Plot);
+            console.log("Actors: " + response.data.Actors);
+            if (response.data.Ratings[1].Source === undefined) {
+                console.log("Rotten Tomatoes: N/A");
+            } else {
                 console.log("Rotten Tomatoes Rating: " + response.data.Ratings[1].Value);
-                console.log("Country Produced: " + response.data.Country);
-                console.log("Language: " + response.data.Language);
-                console.log("Plot: " + response.data.Plot);
-                console.log("Actors: " + response.data.Actors);
-                console.log("-----------------------------------------------------------------------")
+            }
+            console.log("--------------------------------------------------------------------");
         })
+
         .catch(function (error) {
-            console.log(error);
-            console.log("No results found.")
+            console.log(error.message);
         });
 }
+
+
+
 
 function doWhatItSays() {
     fs.readFile("random.txt", "utf-8", function (err, data) {
@@ -102,13 +113,13 @@ function doWhatItSays() {
 
 switch (liriCommand) {
     case "concert-this":
-        concertThis();
+        concertThis(liriData);
         break;
     case "spotify-this-song":
-        spotifyThis();
+        spotifyThis(liriData);
         break;
     case "movie-this":
-        movieThis();
+        movieThis(liriData);
         break;
     case "do-what-it-says":
         doWhatItSays();

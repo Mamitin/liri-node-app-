@@ -10,9 +10,9 @@ LIRI Bot is a command line application using Node.js and several modules install
    * [Bands In Town API](http://www.artists.bandsintown.com/bandsintown-api)
    * [Moment](https://www.npmjs.com/package/moment)
    * [DotEnv](https://www.npmjs.com/package/dotenv)
-   
- ### The instructions are as follows:
- 
+
+### The instructions are as follows:
+
  1. `node liri.js concert-this <artist/band name here>` - This will return:
 
    * Name of the venue
