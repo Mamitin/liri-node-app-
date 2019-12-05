@@ -19,6 +19,11 @@ LIRI Bot is a command line application using Node.js and several modules install
    * Venue location
    * Date of the Event
 
+ ## Here is the code snipit for this API call:
+ <img src="/images/concertThis.PNG">  
+
+
+
 2. `node liri.js spotify-this-song '<song name here>'` - This will return:
 
    * Artist(s)
