@@ -48,6 +48,9 @@ LIRI Bot is a command line application using Node.js and several modules install
    * Actors in the movie.
    * If a movie isn't provided, a default movie, 'Mr. Nobody', will be used.
 
+### Here is the code snipit for this API call:
+<img src="/images/movieThis.PNG">  
+
 4. `node liri.js do-what-it-says`
 ### Here is the code snipit for this command:
  <img src="/images/doWhatItSays.PNG">  
