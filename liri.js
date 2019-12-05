@@ -29,7 +29,9 @@ function concertThis() {
                 console.log("Date of Event: " + moment(response.data[0].datetime).format("MM/DD/YYYY"));
                 console.log("-----------------------------------------------------------------------")
             } else {
+                console.log("-----------------------------------------------------------------------")
                 console.log("No events found");
+                console.log("-----------------------------------------------------------------------")
             }
         })
         .catch(function (error) {
@@ -37,8 +39,8 @@ function concertThis() {
         });
 }
 
-function spotifyThis() {
-    if (liriData === "undefined") {
+function spotifyThis(liriData) {
+    if (liriData === undefined) {
         liriData = "The Sign, Ace of Base";
         console.log(liriData);
     }
@@ -68,7 +70,6 @@ function movieThis(liriData) {
         liriData = "Mr. Nobody";
         //console.log(liriData);
     }
-
     var queryUrl = "https://www.omdbapi.com/?t=" + liriData + "&y=&plot=short&apikey=trilogy"
     axios.get(queryUrl)
         .then(function (response) {
@@ -85,11 +86,9 @@ function movieThis(liriData) {
                 console.log("Rotten Tomatoes Rating: " + response.data.Ratings[1].Value);
             } else {
                 console.log("Rotten Tomatoes: N/A");
-                
             }
             console.log("--------------------------------------------------------------------");
         })
-
         .catch(function (error) {
             console.log(error.message);
         });
@@ -114,7 +113,7 @@ switch (liriCommand) {
     case "concert-this":
         concertThis(liriData);
         break;
-    case "spotify-this-song":
+    case "spotify-this":
         spotifyThis(liriData);
         break;
     case "movie-this":
