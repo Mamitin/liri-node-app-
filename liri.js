@@ -81,10 +81,11 @@ function movieThis(liriData) {
             console.log("Language: " + response.data.Language);
             console.log("Plot: " + response.data.Plot);
             console.log("Actors: " + response.data.Actors);
-            if (response.data.Ratings[1].Source === undefined) {
-                console.log("Rotten Tomatoes: N/A");
-            } else {
+            if (response.data.Ratings && response.data.Ratings[1]) {
                 console.log("Rotten Tomatoes Rating: " + response.data.Ratings[1].Value);
+            } else {
+                console.log("Rotten Tomatoes: N/A");
+                
             }
             console.log("--------------------------------------------------------------------");
         })
@@ -99,14 +100,12 @@ function movieThis(liriData) {
 
 function doWhatItSays() {
     fs.readFile("random.txt", "utf-8", function (err, data) {
-        console.log(data)
+        //console.log(data)
         var dataArray = data.split(",");
         liriCommand = dataArray[0];
         // // console.log(dataArray[0]);
         liriData = dataArray[1];
         // // console.log(dataArray[1]);
-        //console.log(err);
-        // console.log(dataArray);
         spotifyThis(liriData);
     });
 }

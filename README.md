@@ -11,7 +11,7 @@ LIRI Bot is a command line application using Node.js and several modules install
    * [Moment](https://www.npmjs.com/package/moment)
    * [DotEnv](https://www.npmjs.com/package/dotenv)
 
-### The instructions are as follows:
+## The instructions are as follows:
 
  1. `node liri.js concert-this <artist/band name here>` - This will return:
 
@@ -19,7 +19,7 @@ LIRI Bot is a command line application using Node.js and several modules install
    * Venue location
    * Date of the Event
 
- ## Here is the code snipit for this API call:
+ ### Here is the code snipit for this API call:
  <img src="/images/concertThis.PNG">  
 
 
@@ -31,6 +31,10 @@ LIRI Bot is a command line application using Node.js and several modules install
    * A preview link of the son
    * The album
    * If no song is provided the default is "The Sign" by Ace of Base.
+
+### Here is the code snipit for this API call:
+ <img src="/images/spotifyThis.PNG">  
+
 
 3. `node liri.js movie-this '<movie name here>'` - This will return:
 
@@ -45,5 +49,8 @@ LIRI Bot is a command line application using Node.js and several modules install
    * If a movie isn't provided, a default movie, 'Mr. Nobody', will be used.
 
 4. `node liri.js do-what-it-says`
+### Here is the code snipit for this command:
+ <img src="/images/doWhatItSays.PNG">  
+
 
    * LIRI use the commands listed in random.txt and then call one of LIRI's functions.
