@@ -20,7 +20,7 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "file-system": "^2.2.2",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "node-spotify-api": "^1.1.1",
     "omdbapi": "^3.0.0"
   }
